@@ -13,8 +13,8 @@ function Navbar() {
     return (
     <header>
       <nav className={iconActive ? "nav-active" : ""}>
-       <h2 className="nav-logo flex gap-4">
-          <NavLink to={"/"}>EMPLOYEE MANAGEMENT SYSTEM</NavLink>
+       <h2 className="nav-logo flex gap-4 font-serif">
+          <NavLink to={"/"}><img src="./clothesLogo.png" className='w-20 h-20 object-fill'/>Fabric Fusion</NavLink>
        </h2>
        <ul className="nav-links flex gap-6">
        <li >
@@ -28,6 +28,36 @@ function Navbar() {
         <li>
           <NavLink  className="btn" to={"/register"}>
             Register
+          </NavLink>
+        </li>
+        <li>
+          <NavLink  className="btn" to={"/employeeList"}>
+            Admin
+          </NavLink>
+        </li>
+        <li>
+          <NavLink  className="btn" to={"/employeeList"}>
+            Admin
+          </NavLink>
+        </li>
+        <li>
+          <NavLink  className="btn" to={"/employeeList"}>
+            Admin
+          </NavLink>
+        </li>
+        <li>
+          <NavLink  className="btn" to={"/employeeList"}>
+            Admin
+          </NavLink>
+        </li>
+        <li>
+          <NavLink  className="btn" to={"/employeeList"}>
+            Admin
+          </NavLink>
+        </li>
+        <li>
+          <NavLink  className="btn" to={"/employeeList"}>
+            Admin
           </NavLink>
         </li>
         <li>

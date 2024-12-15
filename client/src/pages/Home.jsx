@@ -21,10 +21,6 @@ function Home() {
       {
         snap.intro && (
           <motion.section className='home' {...slideAnimation('left')}>
-            <motion.header>
-              <img src="./clothesLogo.png" alt="logo" 
-               className='w-20 h-20 object-fill'/>
-            </motion.header>
             <motion.div className='home-content' {...headContainerAnimation}>
               <motion.div {...headTextAnimation}>
                 <h3 className='head-text'>
@@ -43,6 +39,7 @@ function Home() {
                  handleClick={()=> state.intro = false}
                  customStyles= "w-fit px-4 py-2.5 font-bold text-sm"
                 />
+
               </motion.div>
             </motion.div>
           </motion.section>
