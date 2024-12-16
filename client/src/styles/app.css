@@ -72,7 +72,7 @@ p {
   gap: 3rem;
   width: 100%;
   height: 100%;
-  margin: 2rem auto;
+  margin:  auto;
 }
 
 .btn {
@@ -104,7 +104,7 @@ p {
 
 .layout-container {
   display: flex;
-  gap: 1rem;
+ 
 }
 
 .loader {

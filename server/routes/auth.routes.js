@@ -10,7 +10,6 @@ router.use(
     })
 )
 
-router.get('/', test)
 router.post('/api/register', registerUser)
 router.post('/api/login', loginUser)
 router.post('/api/create', registerUser)

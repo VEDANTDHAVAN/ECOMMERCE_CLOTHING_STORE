@@ -29,15 +29,15 @@ function Home() {
               </motion.div>
               <motion.div {...headContentAnimation}
               className='flex flex-col gap-10'>
-                <p className='max-w-md font-normal text-gray-700 text-base'>
+                <p className='max-w-md font-normal text-gray-300 text-base'>
                   Create your unique and exclusive shirts with our brand new 3D Customization Tool. 
-                  <strong>Unleash your Inner Creativity</strong> {" "} and define your own Style.
+                  <strong className='text-cyan-300'>Unleash your Inner Creativity</strong> {" "} and define your own Style.
                 </p>
                 <CustomButton
                  type= "filled"
                  title= "Customize It"
                  handleClick={()=> state.intro = false}
-                 customStyles= "w-fit px-4 py-2.5 font-bold text-sm"
+                 customStyles= "w-fit px-4 font-bold text-sm"
                 />
 
               </motion.div>

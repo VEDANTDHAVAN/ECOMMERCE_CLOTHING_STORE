@@ -101,7 +101,7 @@ const Shirt = () => {
           <Decal
             position={[-0.07, 0.04, 0.15]}
             rotation={[0, 0, 0]}
-            scale={0.1}
+            scale={0.07}
             map={logoTexture}
             depthTest={false}
             depthWrite={true}
