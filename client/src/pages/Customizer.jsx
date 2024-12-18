@@ -9,7 +9,7 @@ import { download, logoShirt, stylishShirt } from "../assets";
 import { downloadCanvasToImage, reader } from "../config/helpers";
 import { EditorTabs, FilterTabs, DecalTypes } from "../config/constants";
 import { fadeAnimation, slideAnimation } from "../config/motion";
-
+import axios from 'axios';
 
 function Customizer() {
   const snap = useSnapshot(state);
@@ -45,11 +45,23 @@ function Customizer() {
      }
   }
 
-  const handleSubmit = async (type) =>{
+  const handleSubmit = async ({type,req, res}) =>{
     if(!prompt) 
       return alert("Please Enter a Prompt!!");
     try {
       //call Backend to Generate an Ai Image
+      setGeneratingImg(true);
+      const response = await fetch('http://localhost:8080/api/v1/dalle', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+          prompt,
+        })
+      })
+      const data = await response.json();
+      handleDecals(type, `data:image/png;base64, ${data.photo}`)
 
     } catch (error) {
       alert(error);
@@ -123,7 +135,7 @@ function Customizer() {
        >
         <CustomButton
          type="filled"
-         title="Go Back to HomePage"
+         title="Go Back to Home"
          handleClick={()=> state.intro=true}
          customStyles="w-fit px-4 py-2.5 font-bold text-sm"
         />
