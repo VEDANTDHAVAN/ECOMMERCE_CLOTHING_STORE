@@ -14,6 +14,7 @@ import PlaceOrder from './pages/PlaceOrder'
 import Order from './pages/Order'
 import Product from './pages/Product'
 import Home from './pages/Home'
+import Footer from './components/Footer'
 
 axios.defaults.baseURL = 'http://localhost:8000'
 axios.defaults.withCredentials = true
@@ -37,6 +38,7 @@ function App() {
         <Route path="/product/:productId" element={<Product/>}/>
         <Route path="/customize" element={<Model/>}/>
       </Routes>
+      <Footer/>
      </div>
     </>
   )

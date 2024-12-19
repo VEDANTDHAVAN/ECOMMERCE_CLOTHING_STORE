@@ -21,7 +21,7 @@ const OurPolicy = () => {
         7 days Easy Return Policy
       </p><br />
      <p className='text-cyan-900'>
-     At, <b>Fabric Fusion</b> your happiness is our priority.res a hassle-free shopping experience for you. If you&apos;re not fully satisfied with your purchase, our 7 Days Return Policy has you covered. You can return any product within 7 days of delivery, provided it is unused, unwashed, and in its original condition with all tags and packaging intact. Once the returned item is inspected and approved, we&apos;ll initiate a refund or provide store credit, as per your preference. Shop confidently with Fabric Fusion, knowing we&apos;re here to make every experience seamless and satisfying.
+     At, <b>Fabric Fusion</b> your happiness is our priority. If you&apos;re not fully satisfied with your purchase, our 7 Days Return Policy has you covered. You can return any product within 7 days of delivery, provided it is unused, unwashed, and in its original condition with all tags and packaging intact. Once the returned item is inspected and approved, we&apos;ll initiate a refund or provide store credit, as per your preference. Shop confidently with Fabric Fusion, knowing we&apos;re here to make every experience seamless and satisfying.
      </p>
      </div>
      <div>
