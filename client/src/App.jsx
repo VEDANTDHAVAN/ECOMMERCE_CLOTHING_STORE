@@ -3,8 +3,6 @@ import { Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Model from './pages/Model'
 import Login from './pages/Login'
-
-import Customizer from './pages/Customizer'
 import Register from './pages/Register'
 import EmployeeList from './pages/EmployeeList'
 import axios from 'axios';
@@ -25,7 +23,6 @@ function App() {
     <>
      <div className=' transition-all ease-in'>
      <Navbar/>
-      <Customizer/>
       <Toaster position='bottom-left' toastOptions={{duration: 2000}}/>
       <Routes>
         <Route path="/" element={<Home/>}/>

@@ -13,11 +13,13 @@ import state from '../store';
 import { CustomButton } from '../components';
 import CanvasModel from '../canvas';
 import Hero from '../components/Hero';
+import Customizer from './Customizer';
 function Model() {
   const snap = useSnapshot(state);
 
   return (
     <>
+    <div>
     <AnimatePresence>
       {
         snap.intro && (
@@ -46,9 +48,10 @@ function Model() {
           </motion.section>
         )
       }
-      
+      <Customizer/>
       <CanvasModel/>
     </AnimatePresence>
+    </div>
     </>
   )
 }
