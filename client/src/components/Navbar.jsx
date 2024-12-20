@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
 import "../styles/navbar.css";
-import {useState} from 'react';
+import {useContext, useState} from 'react';
 import {assets} from '../assets/assets/frontend_assets/assets'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { ShopContext } from "../context/ShopContext";
 function Navbar() {
     const navigate = useNavigate();
     const [iconActive, setIconActive] = useState(false);
@@ -13,6 +14,8 @@ function Navbar() {
       }; 
 
     const [visible, setVisible] = useState(false); 
+    const {setShowSearch} = useContext(ShopContext);
+
     return (
     <header>
       <nav className={iconActive ? "nav-active" : "flex"}>
@@ -47,7 +50,7 @@ function Navbar() {
        </ul>
       </nav>
       <div className="flex items-center gap-6">
-          <img src={assets.search_icon} className="w-5 gap-5 cursor-pointer" alt="search" />
+          <img onClick={()=> setShowSearch(true)} src={assets.search_icon} className="w-5 gap-5 cursor-pointer" alt="search" />
        </div>
        <div className="group relative">
         <img src={assets.profile_icon} alt="profile" className="w-5 gap-2 cursor-pointer"/>

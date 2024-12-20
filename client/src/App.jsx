@@ -15,6 +15,7 @@ import Order from './pages/Order'
 import Product from './pages/Product'
 import Home from './pages/Home'
 import Footer from './components/Footer'
+import SearchBar from './components/SearchBar'
 
 axios.defaults.baseURL = 'http://localhost:8000'
 axios.defaults.withCredentials = true
@@ -24,6 +25,7 @@ function App() {
     <>
      <div className=' transition-all ease-in'>
      <Navbar/>
+     <SearchBar/>
       <Toaster position='bottom-left' toastOptions={{duration: 2000}}/>
       <Routes>
         <Route path="/" element={<Home/>}/>
