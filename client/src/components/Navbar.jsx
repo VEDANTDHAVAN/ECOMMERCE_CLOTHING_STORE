@@ -14,7 +14,7 @@ function Navbar() {
       }; 
 
     const [visible, setVisible] = useState(false); 
-    const {setShowSearch} = useContext(ShopContext);
+    const {setShowSearch, getCartCount} = useContext(ShopContext);
 
     return (
     <header>
@@ -62,10 +62,10 @@ function Navbar() {
          </div>
         </div>
        </div>
-       <Link to='/cart' >
+       <NavLink to={'/cart'} >
          <img src={assets.cart_icon} alt="cart" className="w-5 min-w-5" />
-         <p className="absolute right-[-3px] bottom-[-7px] w-4 text-center leading-3 bg-black text-white aspect-square rounded-full text-[10px] p-1">0</p>
-        </Link>
+         <p className="absolute right-[-3px] bottom-[-7px] w-4 text-center leading-3 bg-black text-white aspect-square rounded-full text-[10px] p-1">{getCartCount()}</p>
+        </NavLink>
     </header>
   )
 }

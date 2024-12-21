@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
@@ -16,6 +17,9 @@ import Product from './pages/Product'
 import Home from './pages/Home'
 import Footer from './components/Footer'
 import SearchBar from './components/SearchBar'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/ReactToastify.css'
+import Cart from './pages/Cart'
 
 axios.defaults.baseURL = 'http://localhost:8000'
 axios.defaults.withCredentials = true
@@ -24,6 +28,7 @@ function App() {
   return (
     <>
      <div className=' transition-all ease-in'>
+     <ToastContainer />
      <Navbar/>
      <SearchBar/>
       <Toaster position='bottom-left' toastOptions={{duration: 2000}}/>
@@ -39,6 +44,7 @@ function App() {
         <Route path="/order" element={<Order/>}/>
         <Route path="/product/:productId" element={<Product/>}/>
         <Route path="/customize" element={<Model/>}/>
+        <Route path="/cart" element={<Cart/>}/>
       </Routes>
       <Footer/>
      </div>
