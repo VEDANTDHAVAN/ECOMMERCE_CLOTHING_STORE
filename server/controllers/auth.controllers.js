@@ -111,11 +111,17 @@ const deleteUser = async (req, res) => {
     const data = await User.deleteOne({_id: id})
     res.send({success: true, message: "Data Deleted Successfully!!", data: data})
 }
+
+const adminLogin = async (req, res) => {
+
+} 
+
 module.exports = {
     test,
     registerUser,
     loginUser,
     readUser, 
     updateUser,
-    deleteUser
+    deleteUser,
+    adminLogin
 }
