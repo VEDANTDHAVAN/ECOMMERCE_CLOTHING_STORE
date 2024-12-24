@@ -1,11 +1,31 @@
 const User = require('../models/user');
 const {comparePassword, hashPassword} = require('../helpers/auth');
+const jwt = require('jsonwebtoken');
+
 const test = (req, res) => {
     res.json('test is working')
 };
-const jwt = require('jsonwebtoken');
 
+function generateToken(userId, callback) {
+    const secretKey = "Vedant_Dhavan"; // Replace with your actual secret key
+    const payload = { id: userId };
+    const options = { expiresIn: '1h' };
+  
+    console.log('Generating token...');
+  
+    // Simulate a delay with setTimeout
+    setTimeout(() => {
+      try {
+        const token = jwt.sign(payload, secretKey, options);
+        callback(null, token); // Pass the token to the callback
+      } catch (error) {
+        callback(error, null); // Handle errors
+      }
+    }, 2000); // 2-second delay
+  }
+  
 const registerUser = async (req, res)=> {
+    res.json({msg: "Register API Works"})
     try {
         const {firstname, lastname, email, password, confpassword} = req.body;
         //check if firstname and lastname are entered
@@ -27,7 +47,7 @@ const registerUser = async (req, res)=> {
             return res.json({
                 error: "Email is Already Taken!! Try Another Email."
             })
-        }
+        }  
         //encrypt the password
         const hashedPassword = await hashPassword(password)
         //create user in database
@@ -36,7 +56,15 @@ const registerUser = async (req, res)=> {
             password:hashedPassword, 
             confpassword:hashedPassword,
         })
+        generateToken(123, (error, token) => {
+            if (error) {
+              console.error('Error generating token:', error);
+            } else {
+              console.log('Generated token:', token);
+            }
+          });
         return res.json(user)
+        
     } catch (error) {
         console.log(error)
     }
@@ -56,18 +84,22 @@ const loginUser = async (req, res) => {
         const match = await comparePassword(password, user.password)
         if(match){
             //assign a JasonWebToken
-            res.json('passwords matched')
+            generateToken(123, (error, token) => {
+                if (error) {
+                  console.error('Error generating token:', error);
+                } else {
+                  console.log('Generated token:', token);
+                }
+              });
+              res.json('Passwords Matched!!');
         }
         if(!match){
             //json response
             res.json({
+                success: false,
                 error: 'passwords do not match!'
             })
         }
-        const token = jwt.sign({id: user._id}, process.env.JWT_SECRET);
-        const {password: hashedPassword, ...rest} = user._doc;
-        const expiryDate= new Date(Date.now() + 3600000);
-        res.cookie('token', token, {httpOnly: true, expires: expiryDate}).status(200).json(rest)
     } catch (error) {
         
     }

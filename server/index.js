@@ -4,7 +4,9 @@ const {mongoose} = require('mongoose');
 const app = express();
 const config = require('./controllers/config.js');
 const cookieParser = require('cookie-parser');
-const connectCloud = require('./config/cloudinary.js')
+const connectCloud = require('./config/cloudinary.js');
+const router = require('./routes/auth.routes.js');
+const productRouter = require('./routes/product.routes.js');
 //database Connection
 /*mongoose.connect(config.mongoDbUrl)
 .then(()=> console.log('Database Connected!!'))
@@ -19,6 +21,8 @@ app.use(cookieParser());
 app.use(express.urlencoded({extended: false}));
 
 app.use('/', require('./routes/auth.routes.js'))
+app.use('/api/user', router);
+app.use('/api/product', productRouter);
 
 const port = 8000;
 app.use('/', require('./routes/auth.routes'))

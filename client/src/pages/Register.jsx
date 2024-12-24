@@ -23,6 +23,9 @@ function Register() {
       const {data} = await axios.post('/api/register', {
         firstname, lastname, email, password, confpassword
       })
+      if(!firstname || !lastname){
+        toast.error('Firstname and Lastname is Required!!')
+      }
       if(data.error){
         toast.error(data.error)
       }else {
