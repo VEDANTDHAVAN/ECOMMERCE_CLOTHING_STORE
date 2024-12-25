@@ -1,7 +1,7 @@
 const User = require('../models/user');
 const {comparePassword, hashPassword} = require('../helpers/auth');
 const jwt = require('jsonwebtoken');
-
+const config = require('../controllers/config.js');
 const test = (req, res) => {
     res.json('test is working')
 };
@@ -101,7 +101,7 @@ const loginUser = async (req, res) => {
             })
         }
     } catch (error) {
-        
+        console.log(error)
     }
 }
 
@@ -145,7 +145,25 @@ const deleteUser = async (req, res) => {
 }
 
 const adminLogin = async (req, res) => {
-
+    try {
+        const {email, password} = req.body;
+        if(email === config.ADMIN_EMAIL && password === config.ADMIN_PASSWORD){
+          //const token = jwt.sign(email+password, process.env.JWT_SECRET)
+          //res.json({success: true, token})
+          generateToken(123, (error, token) => {
+            if (error) {
+              console.error('Error generating token:', error);
+            } else {
+              console.log('Generated token:', token);
+              res.json({success:true,message:'Passwords Matched!!', token});
+            }
+          });
+        }else{
+            res.json({success:false, message: "Invalid Credentials!!"})
+        }
+    } catch (error) {
+        console.log(error) 
+    }
 } 
 
 module.exports = {

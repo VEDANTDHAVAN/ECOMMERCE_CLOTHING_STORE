@@ -27,7 +27,7 @@ const productSchema = new mongoose.Schema({
     date: {
         type: Number, required: true
     }
-})
+},{timestamps:true})
 
 const productModel = mongoose.models.product || mongoose.model("product", productSchema);
 
