@@ -15,6 +15,7 @@ const productRouter = require('./routes/product.routes.js');
 mongoose.connect(config.mongoDbUrl2)
 .then(()=> console.log('Shop Database Connected'))
 .catch((err)=> console.log('Database Not Connected!!'))
+console.log(config.CLOUDINARY_API_KEY)
 //middleware
 app.use(express.json());
 app.use(cookieParser());

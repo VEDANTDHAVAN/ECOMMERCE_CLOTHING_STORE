@@ -20,11 +20,16 @@ import SearchBar from './components/SearchBar'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/ReactToastify.css'
 import Cart from './pages/Cart'
+import Admin from './pages/Admin'
+import Add from './pages/Add'
+import List from './pages/List'
+import Orders from './pages/Orders'
 
 axios.defaults.baseURL = 'http://localhost:8000'
 axios.defaults.withCredentials = true
 
 function App() {
+  
   return (
     <>
      <div className=' transition-all ease-in'>
@@ -37,6 +42,7 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/employeeList" element={<EmployeeList/>}/>
+        <Route path="/admin"  element={<Admin/>}/>
         <Route path="/collection" element={<Collection/>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="/contact" element={<Contact/>}/>
@@ -45,6 +51,9 @@ function App() {
         <Route path="/product/:productId" element={<Product/>}/>
         <Route path="/customize" element={<Model/>}/>
         <Route path="/cart" element={<Cart/>}/>
+        <Route path="/add" element={<Add/>}/>
+        <Route path="/list" element={<List/>}/>
+        <Route path="/orders" element={<Orders/>}/>
       </Routes>
       <Footer/>
      </div>

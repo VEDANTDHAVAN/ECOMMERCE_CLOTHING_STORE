@@ -143,7 +143,7 @@ const deleteUser = async (req, res) => {
     const data = await User.deleteOne({_id: id})
     res.send({success: true, message: "Data Deleted Successfully!!", data: data})
 }
-
+//http://localhost:8000/api/admin
 const adminLogin = async (req, res) => {
     try {
         const {email, password} = req.body;

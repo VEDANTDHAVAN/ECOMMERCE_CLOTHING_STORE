@@ -10,6 +10,12 @@ router.use(
     })
 )
 
+/*router.use(
+    cors({
+        credentials:true,
+        origin: 'http://localhost:5174'
+    })
+)*/
 router.post('/api/register', registerUser)
 router.post('/api/login', loginUser)
 router.post('/api/create', registerUser)

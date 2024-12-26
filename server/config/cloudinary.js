@@ -1,5 +1,6 @@
-const cloudinary = require("cloudinary").v2;
-
+require('dotenv').config();
+const cloudinary = require('cloudinary').v2;
+const config = require('../controllers/config')
 const connectCloud = async () => {
    cloudinary.config({
     cloud_name: process.env.CLOUDINARY_NAME,
