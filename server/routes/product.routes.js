@@ -23,7 +23,7 @@ const adminAuth = require('../middleware/adminAuth.js');
 const productRouter = express.Router();
 
 productRouter.post('/add',upload,addProduct);
-productRouter.post('/remove',adminAuth,removeProduct);
+productRouter.post('/remove',removeProduct);
 productRouter.post('/single',singleProduct);
 productRouter.get('/list',listProducts);
 

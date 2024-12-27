@@ -43,6 +43,18 @@ const Add = () => {
        });
        toast.success("Product Uploaded Successfully!!")
        console.log(response.data);
+       if(response.data.success){
+        setName('')
+        setDescription('')
+        setImage1(false)
+        setImage2(false)
+        setImage3(false)
+        setImage4(false)
+        setPrice('')
+        setBestSeller(false)
+       } else{
+        toast.error('Product Could not be Uploaded!!')
+       }
 
     } catch (error) {
         toast.error("An Error Occured while Uploading the Product!!")

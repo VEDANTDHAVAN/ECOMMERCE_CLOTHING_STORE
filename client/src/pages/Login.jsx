@@ -1,30 +1,39 @@
 /* eslint-disable no-unused-vars */
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import { NavLink, useNavigate } from "react-router-dom";
 import "../styles/register.css";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { ShopContext } from '../context/ShopContext';
 axios.defaults.baseURL = null;
 function Login() {
   const [data, setData] = useState({
     email: '',
     password: '',
   })
-  const navigate = useNavigate();
+
+  const { token, setToken, navigate } = useContext(ShopContext);
+  const navigateTo = useNavigate();
   const loginUser = async (e) => {
     e.preventDefault();
     const {email, password} = data;
     try {
-      const {data} = await axios.post('/api/login', {email, password})
+      const data = await axios.post('/api/login', {email, password})
+      console.log(data)
+      if(data.success){
+         setToken(data.token)
+         localStorage.setItem('token',data.token)
+      }
       if(data.error){
         toast.error(data.error)
       }else {
         setData({})
         toast.success('Login Successful, Welcome to our Website!!')
-        navigate('/')
+        navigateTo('/')
       }
     } catch (error) {
       console.log(error)
+      toast.error(error.message)
     }
   }
   return (

@@ -27,7 +27,7 @@ import Orders from './pages/Orders'
 
 axios.defaults.baseURL = 'http://localhost:8000'
 axios.defaults.withCredentials = true
-
+export const currency = '₹'
 function App() {
   
   return (

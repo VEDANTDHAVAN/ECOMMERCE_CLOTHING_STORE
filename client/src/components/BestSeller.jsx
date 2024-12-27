@@ -5,7 +5,7 @@ import Title from './Title';
 import Products from './Products';
 
 const BestSeller = () => {
-  const { products } = useContext(ShopContext); // Access products from context
+  const { products, dbProducts } = useContext(ShopContext); // Access products from context
   const [bestSeller, setBestSeller] = useState([]);
 
   useEffect(() => {

@@ -61,6 +61,7 @@ const registerUser = async (req, res)=> {
               console.error('Error generating token:', error);
             } else {
               console.log('Generated token:', token);
+             return  res.status(200).json({token})
             }
           });
         return res.json(user)
@@ -89,6 +90,7 @@ const loginUser = async (req, res) => {
                   console.error('Error generating token:', error);
                 } else {
                   console.log('Generated token:', token);
+                  res.status(200).json(token)
                 }
               });
               res.json('Passwords Matched!!');
