@@ -1,28 +1,29 @@
 const productModel = require("../models/product");
-
+const multer = require('multer')
 const cloudinary = require("cloudinary").v2;
-
+const cloud = require('../config/cloudinary');
+const fs = require('fs')
 //Function for adding Product
 const addProduct = async (req, res) => {
    try {
      const {name, description, price, category, subcategory, sizes, bestseller} = req.body;
 
-     const image1 = req.image1 && req.files.image1[0];
-     const image2 = req.image2 && req.files.image2[0];
-     const image3 = req.image3 && req.files.image3[0];
-     const image4 = req.image4 && req.files.image4[0];
+     const imageUrls = [];
      
-     const images = [image1, image2, image3, image4].filter((item)=> item !== undefined);
-     
-     let imageUrl = await Promise.all(
-        images.map(async (item)=> {
-          const result = await cloudinary.uploader.upload(item.path, {resource_type:'image', folder: 'uploads'});
-          console.log('Upload Result:', result);
-          return result.secure_url;
-        })
-     )
-     console.log(name, description, price, category, subcategory, sizes, bestseller)
-     console.log(imageUrl);
+     const imageFields = ['image1', 'image2', 'image3', 'image4'];
+
+
+     for(const field of imageFields){
+        if(req.files[field]){
+            const file = req.files[field][0];//file access
+            const result = await cloudinary.uploader.upload(file.path, {
+                folder: 'product_images',
+            });
+            imageUrls.push(result.secure_url);
+            fs.unlinkSync(file.path); //remove temporary file
+        }
+     }
+     console.log(name, description, price, category, subcategory, sizes, bestseller, imageUrls)
 
      if (!subcategory) {
         return res.status(400).json({ message: 'Subcategory is required.' });
@@ -31,18 +32,20 @@ const addProduct = async (req, res) => {
         name, description, category, price:Number(price),
         subcategory, bestseller: bestseller === "true" ? true : false,
         sizes: JSON.parse(sizes),
-        image: imageUrl,
+        image: imageUrls,
         date: Date.now()
      }
      console.log(productData);
+     console.log(req.files);
+     console.log(imageUrls);
      const product = new productModel(productData)
      await product.save();
-     res.json({success: true, messsage: "Product Added Successfully!!", product})
+     res.status(201).json({success: true, messsage: "Product Added Successfully!!", product: product})
    } catch (error) {
-     res.json({
+     res.status(500).json({
         success: false, messsage: error.messsage
      })
-     throw error
+     console.error(error);
    }
 }
 

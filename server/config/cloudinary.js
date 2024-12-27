@@ -1,12 +1,15 @@
-require('dotenv').config();
 const cloudinary = require('cloudinary').v2;
+const multer = require('multer');
 const config = require('../controllers/config')
-const connectCloud = async () => {
+const express = require('express');
+const fs = require('fs');
+
+const cloudinaryCloud  = async () => {
    cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_SECRET_KEY
-   })
+      cloud_name: config.CLOUDINARY_NAME,
+      api_key: config.CLOUDINARY_API_KEY,
+      api_secret: config.CLOUDINARY_SECRET_KEY,
+   });
 }
 
-module.exports = connectCloud;
+module.exports = cloudinaryCloud

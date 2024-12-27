@@ -33,16 +33,20 @@ const Add = () => {
        formData.append("subcategory", subCategory)
        formData.append("bestseller", bestSeller)
        formData.append("sizes", JSON.stringify(sizes))
-       image1 && formData.append("image1", image1)
-       image2 && formData.append("image2", image2)
-       image3 && formData.append("image3", image3)
-       image4 && formData.append("image4", image4)
+       if(image1) formData.append("image1", image1)
+       if(image2) formData.append("image2", image2)
+       if(image3) formData.append("image3", image3)
+       if(image4) formData.append("image4", image4)
 
-       const response = await axios.post('/api/product/add', formData)
+       const response = await axios.post('/api/product/add', formData, {
+        headers: {'Content-Type': 'multipart/form-data'},
+       });
+       toast.success("Product Uploaded Successfully!!")
        console.log(response.data);
 
     } catch (error) {
         toast.error("An Error Occured while Uploading the Product!!")
+        console.error(error);
     }
   }
 
@@ -64,7 +68,7 @@ const Add = () => {
                 <input type="file" onChange={(e)=> setImage2(e.target.files[0])} id="image2" hidden/>
               </label>
               <label htmlFor="image3">
-                <img className='w-20' src={!image3 ? assets.upload_area : URL.createObjectURL(image4)} alt="" />
+                <img className='w-20' src={!image3 ? assets.upload_area : URL.createObjectURL(image3)} alt="" />
                 <input type="file" onChange={(e)=> setImage3(e.target.files[0])} id="image3" hidden/>
               </label>
               <label htmlFor="image4">
