@@ -47,13 +47,13 @@ This project is a full-stack E-Commerce clothing website featuring real product 
 │   ├── src/components/ # Product and Chat UI
 │   └── src/context/    # ShopContextProvider
 
-📁 server/               # Flask backend
+📁 flask-api/               # Flask backend
 │   ├── app.py          # Main Flask app
 │   ├── db.py           # PostgreSQL connector
 │   ├── /images/        # Product images
 │   └── chat_logs.sql   # Schema for chatbot logs
 
-📄 full_products_from_assets.sql   # Inserts 52+ product records
+📄 insert_products_from_assets.sql   # Inserts 52+ product records
 ```
 
 ---
