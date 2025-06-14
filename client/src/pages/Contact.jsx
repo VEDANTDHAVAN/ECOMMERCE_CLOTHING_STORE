@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import Title from '../components/Title'
-import { assets } from '../assets/assets/frontend_assets/assets'
+import { assets } from '../assets/frontend_assets/assets'
 import NewsLetter from '../components/NewsLetter'
 
 const Contact = () => {

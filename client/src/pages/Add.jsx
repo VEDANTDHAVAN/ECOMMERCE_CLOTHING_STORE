@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import Sidebar from '../components/Sidebar'
 import Title from '../components/Title'
-import { assets } from '../assets/assets/frontend_assets/assets'
+import { assets } from '../assets/frontend_assets/assets'
 import toast from 'react-hot-toast'
 import axios from 'axios'
 axios.defaults.baseURL = null;

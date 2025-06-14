@@ -2,7 +2,7 @@
 import React, { useContext, useState } from 'react'
 import Title from '../components/Title'
 import CartTotal from '../components/CartTotal'
-import { assets } from '../assets/assets/frontend_assets/assets'
+import { assets } from '../assets/frontend_assets/assets'
 import { ShopContext } from '../context/ShopContext'
 
 const PlaceOrder = () => {

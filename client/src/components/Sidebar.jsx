@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { assets } from '../assets/assets/frontend_assets/assets'
+import { assets } from '../assets/frontend_assets/assets'
 const Sidebar = () => {
   return (
     <div className='w-[18%] min-h-screen border-r-2'>

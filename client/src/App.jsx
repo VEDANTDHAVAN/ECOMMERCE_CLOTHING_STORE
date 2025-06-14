@@ -2,6 +2,7 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
+import Chatbox from './components/Chatbox'
 import Model from './pages/Model'
 import Login from './pages/Login'
 import Register from './pages/Register'
@@ -23,7 +24,6 @@ import Cart from './pages/Cart'
 import Admin from './pages/Admin'
 import Add from './pages/Add'
 import List from './pages/List'
-import Orders from './pages/Orders'
 
 axios.defaults.baseURL = 'http://localhost:8000'
 axios.defaults.withCredentials = true
@@ -32,7 +32,7 @@ function App() {
   
   return (
     <>
-     <div className=' transition-all ease-in'>
+     <div className='transition-all ease-in '>
      <ToastContainer />
      <Navbar/>
      <SearchBar/>
@@ -53,8 +53,8 @@ function App() {
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/add" element={<Add/>}/>
         <Route path="/list" element={<List/>}/>
-        <Route path="/orders" element={<Orders/>}/>
       </Routes>
+      <Chatbox />
       <Footer/>
      </div>
     </>

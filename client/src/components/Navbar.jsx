@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import "../styles/navbar.css";
 import {useContext, useState} from 'react';
-import {assets} from '../assets/assets/frontend_assets/assets'
+import {assets} from '../assets/frontend_assets/assets'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { ShopContext } from "../context/ShopContext";
 function Navbar() {
